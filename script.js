@@ -267,6 +267,22 @@ class InvestmentSimulator {
         });
 
         stockDataSelect.addEventListener('change', (e) => this.displayStockData(e.target.value));
+
+        // View mode toggle
+        const mobileViewBtn = document.getElementById('mobileViewBtn');
+        const desktopViewBtn = document.getElementById('desktopViewBtn');
+
+        mobileViewBtn.addEventListener('click', () => {
+            document.body.classList.remove('desktop-mode');
+            mobileViewBtn.classList.add('active');
+            desktopViewBtn.classList.remove('active');
+        });
+
+        desktopViewBtn.addEventListener('click', () => {
+            document.body.classList.add('desktop-mode');
+            desktopViewBtn.classList.add('active');
+            mobileViewBtn.classList.remove('active');
+        });
     }
 
     updateYearOptions(stockSymbol) {

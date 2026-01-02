@@ -37,6 +37,77 @@ body {
     overflow-x: hidden;
 }
 
+/* View Mode Toggle */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.view-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4c51bf;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.view-btn.active {
+    background: #4c51bf;
+    color: white;
+    border-color: #4c51bf;
+}
+
+.view-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-2px);
+}
+
+/* Desktop Mode - forced wide layout */
+body.desktop-mode {
+    overflow-x: auto;
+    max-width: none;
+}
+
+body.desktop-mode .container {
+    min-width: 1000px;
+    max-width: 1200px;
+    overflow-x: visible;
+}
+
+body.desktop-mode .input-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+body.desktop-mode .results-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+body.desktop-mode .stock-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+body.desktop-mode .card {
+    padding: 2rem;
+}
+
+body.desktop-mode .data-tabs {
+    flex-direction: row;
+}
+
+body.desktop-mode .header-content h1 {
+    font-size: 3rem;
+}
+
 /* Header Styles */
 .header {
     text-align: center;
@@ -98,6 +169,9 @@ body {
 .input-group {
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .input-group label {
@@ -119,6 +193,9 @@ body {
     appearance: none;
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .select-input:focus, .number-input:focus {
